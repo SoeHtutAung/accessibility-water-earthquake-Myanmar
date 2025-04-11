@@ -10,33 +10,21 @@ Following data are extracted
 | mmr_pd_2020_1km_UNadj.tif | Population density raster surface (2020 UN adjusted) from [Worldpop](https://hub.worldpop.org/geodata/listing?id=77)|
 | water_treatment_plants.csv | Location of water treatment plants by [TSBM](https://www.facebook.com/people/TSBM-The-Spirit-of-Brotherhood-Mission/100067464211453/)|
 
-## 2. Producing datasets
-We rescale the population according to [World Bank](https://databank.worldbank.org/reports.aspx?source=2&country=MMR)'s estimates for 2023 and projected for 2024 using average population growth rate. Total population and population in each intensity categories are extracted using exactextractr package. Proportion of population who experienced severe (MMI scale - 8) or violent (MMI scale - 9) for each township is used to display in the maps.
+## 2. Analysis workflow
+### 2.1 Producing accessibility dataset for catchment areas
+Firstly, a raster layer of travel time (in minutes) to nearest water treatment plant is created using the following workflow: <br/>
+<img src=https://github.com/user-attachments/assets/9e12009c-7268-4e5e-bbe9-e65ac5ce2b69 title="wf1" width="350"> 
 
-## 4. Results
-### 4.1 Maps and datasets
-Percentage of population who experienced violent intensity in wards of Mandalay <br/>
-<img src=https://github.com/user-attachments/assets/06dedb61-a75d-4df7-841c-69f37a3ec717 title="ward_mdy" width="340"> 
-<img src=https://github.com/user-attachments/assets/dda7a92d-b517-41c4-83b4-e7a65eb7f5a1 title="ward_mdy_tbl" width="600"> <br/>
+### 2.2 Extracting population coverage
+Then, population coverage in each ward and township is estimated using the administrative boundaries and population density surfaces as per this workflow: <br/>
+<img src=https://github.com/user-attachments/assets/001f484b-5219-474a-8f1a-48de384740ee title="wf2" width="400"> 
 
-Percentage of population who experienced severe or violent intensity in townships of Mandalay <br/>
-<img src=https://github.com/user-attachments/assets/34b81666-d45f-44fa-9f2d-c2d468de1ab5 title="tsp_mdy" width="400"> 
-<img src=https://github.com/user-attachments/assets/48b6eb95-664a-4bef-8c9f-60ec2e9b5a3b title="tsp_mdy_tbl" width="570"> <br/>
+## 3. Results
+### 3.1 Catchment area
+Catchment area of 6 TSBM's water treatment plants could be observed in this [map](https://www.google.com/maps/d/u/0/edit?mid=1OfoKXAPGzb6lspwxFQUrIj-C3eKRaSY&ll=21.92921926643306%2C96.02845706318978&z=12) <br/>
+<img src=https://github.com/user-attachments/assets/558c59fc-5581-4a3c-9574-3280b7c38440 title="catchment" width="500"> 
 
-Percentage of population who experienced severe or violent intensity in townships of Sagaing <br/>
-<img src=https://github.com/user-attachments/assets/4ce31559-17fb-4e65-a970-1d2c117eb15c title="tsp_sgg" width="400"> 
-<img src=https://github.com/user-attachments/assets/9d3a0d14-3e26-4724-a5a1-f05bc20d02cf title="tsp_sgg_tbl" width="570"> <br/>
-
-Percentage of population who experienced severe or violent intensity in townships of Nay Pyi Taw <br/>
-<img src=https://github.com/user-attachments/assets/8b7a11d8-c597-4e98-a793-f53fe4ad0ac7 title="tsp_npt" width="400"> 
-<img src=https://github.com/user-attachments/assets/a8d4bdf5-92c5-4c9e-83cd-57c0f877fc4d title="tsp_npt_tbl" width="570"> <br/>
-
-Percentage of population who experienced severe or violent intensity in townships of Bago <br/>
-<img src=https://github.com/user-attachments/assets/5d1289be-ffe7-494c-8332-dd6d14291c64 title="tsp_bgo" width="400"> 
-<img src=https://github.com/user-attachments/assets/e5559152-39ec-46ae-8b98-fd584c665243 title="tsp_bgo_tbl" width="570"> <br/>
-
-### 4.2 Public Website (Canva site)
-The results were displayed in Canva site ([Click Here!](https://soehtutaung.my.canva.site/ota-earthquake-tsp)) using Flourish. Screenshots are as below:
-<img src=https://github.com/user-attachments/assets/17e3cbc2-5b14-4d1d-a4fa-0999dfdc38a6 title="pg1" width="700"> 
-<img src=https://github.com/user-attachments/assets/b5280551-bccd-4d2c-ac9b-1fcfa1693560 title="pg2" width="700"> 
-<img src=https://github.com/user-attachments/assets/682bfda6-897a-4c66-8ad4-7a1d0f8b97f7 title="pg3" width="700"> 
+### 3.2 Population coverage
+The results were displayed in Canva site ([Click Here!](https://soehtutaung.my.canva.site/tsbm-wtp-access)) using Flourish. <br/>
+***Example:** Estimated population according to walking distance to TSBM's water treatment plant in Sagaing township* <br/>
+<img src=https://github.com/user-attachments/assets/24ff7720-865f-442c-87ea-79eb67e32b19 title="pg1" width="500">
