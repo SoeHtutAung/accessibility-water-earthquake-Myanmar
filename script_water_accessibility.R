@@ -239,4 +239,31 @@ mdy_tbl <- cov_mdy_df %>%
   arrange(travel_time_zone, township, desc(population))
 # write.csv(mdy_tbl, "data/mdy_population_coverage.csv", row.names = FALSE)
 
-
+# 3.5 Tada-U
+# unique(township$TS[grepl("^Ta", township$TS)]) # check exact name of Tada-U in dataframe
+# # create ward polygons for Tada-U
+tsp_tdu <- township %>% filter(TS == "Tada-U") %>% st_transform(crs = crs(wtp)) # ward boundaries
+contours_tdu <- st_intersection(tsp_tdu, contours_rings) # intersect ward and travel time zones
+# # extract Population by Travel Time Zone and Ward
+cov_tdu <- list()
+# # loop through each ward and extract population
+for (i in 1:nrow(contours_tdu)) {
+  # extract the current area boundary
+  area <- contours_tdu[i, ]
+  # exact_extract to get the population in this ward-contour area
+  pop <- exact_extract(pop_final, area, fun = "sum")
+  # store the results
+  cov_tdu[[length(cov_tdu) + 1]] <- data.frame(
+    ward = area$TS,  # ward name
+    travel_time_zone = area$level,  # travel time zone level
+    population = round(pop,0)  # population in this area
+  )
+}
+# # combine all the results into a single data frame
+cov_tdu_df <- do.call(rbind, cov_tdu)
+# # display a table
+tdu_tbl <- cov_tdu_df %>%
+  group_by(travel_time_zone) %>%
+  summarise(population = sum(population)) %>%
+  arrange(travel_time_zone, desc(population))
+# write.csv(tdu_tbl, "data/tdu_population_coverage.csv", row.names = FALSE)
