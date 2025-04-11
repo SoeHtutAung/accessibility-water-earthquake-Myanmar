@@ -152,6 +152,8 @@ contours_rings <- bind_rows(
   poly_15_ring %>% mutate(level = 15),
   poly_30_ring %>% mutate(level = 30)
 )
+# # transform crs for saving as geojson.io works with EPSG: 4326
+# contours_rings <- terra::project(contours_rings, "EPSG:4326")
 # st_write(st_as_sf(contours_rings), "data/contours_rings.geojson", delete_dsn = TRUE)
 
 # 3.2 Sagaing
